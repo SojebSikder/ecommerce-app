@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Admin route
+Route::group(['prefix' => 'admin'], function () {
+    Route::get("/", function () {
+        return "Hello admin";
+    });
 });
+
+// App route
+Route::get('/', [App\Http\Controllers\app\IndexController::class, 'index']);
