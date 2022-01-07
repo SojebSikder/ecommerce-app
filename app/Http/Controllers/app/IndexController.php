@@ -12,4 +12,9 @@ class IndexController extends Controller
     {
         return view("app/index");
     }
+    
+    public function show($id)
+    {
+        return view("app/index");
+    }
 }
