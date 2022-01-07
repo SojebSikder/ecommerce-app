@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('slug')->nullable();
             $table->text('content')->nullable();
             $table->string('brand')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable()->references('id')->on('categories')->onDelete('set null');
             // Product Info
             $table->decimal('price')->nullable();
             $table->decimal('old_price')->nullable();
