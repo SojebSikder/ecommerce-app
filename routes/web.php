@@ -28,3 +28,6 @@ Route::group(['prefix' => 'admin'], function () {
 // App route
 Route::get('/', [App\Http\Controllers\app\IndexController::class, 'index']);
 Route::get('/product/{id}', [App\Http\Controllers\app\IndexController::class, 'show']);
+// Auth
+Route::get('/login', [App\Http\Controllers\app\AuthController::class, 'login_page']);
+Route::get('/register', [App\Http\Controllers\app\AuthController::class, 'register_page']);
