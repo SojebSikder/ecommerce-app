@@ -4,6 +4,8 @@
 
 
 <div class="container" style="margin-top: 80px">
+    <h2>Explore from latest collection</h2>
+    <hr>
     <!-- product card start -->
     <div class="card" style="width: 18rem">
         <img class="card-img-top" src="{{ asset('assets/images/watch.webp') }} " alt="Card image cap" />

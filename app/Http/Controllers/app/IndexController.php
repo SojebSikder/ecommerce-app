@@ -15,6 +15,6 @@ class IndexController extends Controller
     
     public function show($id)
     {
-        return view("app/index");
+        return view("app/product_details");
     }
 }
