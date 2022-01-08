@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     //
+    public function profile_page()
+    {
+        return view('app/profile');
+    }
     public function login_page()
     {
         return view('app/login');
