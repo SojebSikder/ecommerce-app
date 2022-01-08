@@ -57,6 +57,9 @@
     <hr>
 
     <?php
+
+    use Illuminate\Support\Facades\Http;
+
     $total = 0;
     foreach ($data as $rows) {
         $total = ($rows->products->price * $rows->qnty) + $total;
@@ -71,7 +74,7 @@
         </div>
     </div>
 
-    <form action="" method="post">
+    <section>
         <div class="d-flex flex-column justify-content-center">
 
             <div class="mb-3 row">
@@ -93,15 +96,67 @@
             <div class="mb-3 row">
                 <label for="inputPassword" class="col-sm-2 col-form-label">Comment</label>
                 <div class="col-sm-5">
-                    <textarea name="comment" class="form-control" placeholder="Comment (If any)" id="inputPassword"></textarea>
+                    <textarea id="comment" name="comment" class="form-control" placeholder="Comment (If any)" id="inputPassword"></textarea>
                 </div>
             </div>
         </div>
         <div class="d-flex flex-row justify-content-center">
-            <button type="submit" class="btn btn-info btn-lg">Place Order</button>
+            <button id="submit" type="submit" class="btn btn-info btn-lg">Place Order</button>
         </div>
-    </form>
+    </section>
 
 </div>
+
+<?php
+$order_product_id = uniqid(true);
+?>
+
+<!-- Script -->
+<script src=" {{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
+<script src=" {{ asset('assets/js/popper.min.js') }} "></script>
+<!-- bootstrap -->
+<script src=" {{ asset('assets/js/bootstrap.min.js') }} "></script>
+<script src=" {{ asset('assets/js/all.min.js') }} "></script>
+
+
+<script>
+    $(document).ready(function() {
+        $("#submit").click(function() {
+
+            if ($("#address").val() == "") {
+                return alert("Enter address")
+            }
+
+            // $.post("/order", {
+            //     order_product_id: "{{ $order_product_id }}",
+            //     price: "{{ $total }}",
+            //     address: $("#address").val(),
+            //     comment: $("#comment").val(),
+            //     payment_mode: $('input[name="payment_mode"]:checked').val(),
+            // }, headers: {
+            //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            // });
+
+            $.ajax({
+                url: '/order',
+                type: 'post',
+                data: {
+                    order_product_id: "{{ $order_product_id }}",
+                    price: "{{ $total }}",
+                    address: $("#address").val(),
+                    comment: $("#comment").val(),
+                    payment_mode: $('input[name="payment_mode"]:checked').val(),
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                dataType: 'json',
+                success: function(data) {
+                    console.info(data);
+                }
+            });
+        });
+    })
+</script>
 
 @extends('app\partial\footer\footer')

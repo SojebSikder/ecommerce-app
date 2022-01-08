@@ -16,7 +16,7 @@ class OrderController extends Controller
     {
         $order = new Order();
         $order->user_id = Auth::id();
-        $order->order_id = "ECOM" . uniqid(true);
+        $order->id = "ECOM" . uniqid(true);
         $order->order_product_id = $request->input('order_product_id');
         $order->price = $request->input('price');
         $order->payment_mode = $request->input('payment_mode');
