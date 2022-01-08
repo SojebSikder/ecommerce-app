@@ -33,4 +33,19 @@ class CartController extends Controller
         $result->save();
         return back();
     }
+
+    public function destroy($id)
+    {
+        $user_id = Auth::id();
+        $user = Cart::where('id', $id)->first();
+
+        if ($user_id == $user->user_id) {
+            $cart = Cart::where('id', $id);
+            $cart->delete();
+            // return response()->json(['message' => 'Deleted successfully'], 200);
+            return back();
+        } else {
+            return response()->json(["message" => "you're not able to proceed :("], 200);
+        }
+    }
 }

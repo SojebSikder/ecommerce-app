@@ -36,7 +36,13 @@
                 <td> {{ $row->products->brand }} </td>
                 <td> {{ $row->qnty }} </td>
                 <td> {{ $row->products->price }}tk </td>
-                <td> <button class="btn btn-danger">Remove</button>  </td>
+
+                <form method="post" action="/cart/{{ $row->id }}">
+                    @csrf
+                    {{ method_field('delete') }}
+                    <td> <button type="submit" class="btn btn-danger">Remove</button></td>
+                </form>
+
             </tr>
 
             @empty
@@ -48,7 +54,7 @@
     <?php
     $total = 0;
     foreach ($data as $rows) {
-        $total = $rows->products->price + $total;
+        $total = ($rows->products->price * $rows->qnty) + $total;
     }
 
 
