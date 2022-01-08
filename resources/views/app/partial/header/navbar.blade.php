@@ -24,7 +24,7 @@
                         <a class="dropdown-item" href="/login">Login</a>
                         <a class="dropdown-item" href="/register">Register</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item"  href="{{ URL::to('logout') }}">Logout</a>
                     </div>
                 </li>
             </ul>

@@ -33,3 +33,4 @@ Route::get('/login', [App\Http\Controllers\app\AuthController::class, 'login_pag
 Route::post('/login', [App\Http\Controllers\app\AuthController::class, 'login']);
 Route::get('/register', [App\Http\Controllers\app\AuthController::class, 'register_page']);
 Route::post('/register', [App\Http\Controllers\app\AuthController::class, 'register']);
+Route::get('/logout', [App\Http\Controllers\app\AuthController::class, 'logout']);
