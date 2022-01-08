@@ -55,7 +55,7 @@
         </tbody>
     </table>
     <hr>
-    
+
     <?php
     $total = 0;
     foreach ($data as $rows) {
@@ -72,11 +72,7 @@
     </div>
 
     <div class="d-flex flex-row justify-content-center">
-        <form method="post" action="{{ route('order.store') }}">
-            @csrf
-            <button type="submit" class="btn btn-info btn-lg">Place Order</button>
-        </form>
-
+        <button type="submit" class="btn btn-info btn-lg">Place Order</button>
     </div>
 
 </div>
