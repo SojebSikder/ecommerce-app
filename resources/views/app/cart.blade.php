@@ -129,51 +129,56 @@ $order_product_id = uniqid(true);
                 dataType: 'json',
                 success: function(data) {
                     // handle order product
-                    
+                    data.data.forEach(row => {
+                        console.log("{{ $order_product_id }}")
+                        console.log(row.products.id)
+                        console.log(row.products.price)
+                        console.log(row.qnty)
+
+                        // store order product
+                        $.ajax({
+                            url: '/order_product',
+                            type: 'POST',
+                            data: {
+                                order_product_id: "{{ $order_product_id }}",
+                                product_id: row.products.id,
+                                price: row.products.price,
+                                qnty: row.qnty,
+                            },
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            dataType: 'json',
+                            success: function(data) {
+                                // console.info(data);
+                            }
+                        });
+
+                    });
                     console.info(data);
                 }
             });
 
-            // store order product
-            // $.ajax({
-            //     url: '/order_product',
-            //     type: 'POST',
-            //     data: {
-            //         product_id: "",
-            //         order_product_id: "{{ $order_product_id }}",
-            //         price: "{{ $total }}",
-            //         address: $("#address").val(),
-            //         comment: $("#comment").val(),
-            //         payment_mode: $('input[name="payment_mode"]:checked').val(),
-            //     },
-            //     headers: {
-            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            //     },
-            //     dataType: 'json',
-            //     success: function(data) {
-            //         console.info(data);
-            //     }
-            // });
 
-            // store order
-            // $.ajax({
-            //     url: '/order',
-            //     type: 'POST',
-            //     data: {
-            //         order_product_id: "{{ $order_product_id }}",
-            //         price: "{{ $total }}",
-            //         address: $("#address").val(),
-            //         comment: $("#comment").val(),
-            //         payment_mode: $('input[name="payment_mode"]:checked').val(),
-            //     },
-            //     headers: {
-            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            //     },
-            //     dataType: 'json',
-            //     success: function(data) {
-            //         console.info(data);
-            //     }
-            // });
+            store order
+            $.ajax({
+                url: '/order',
+                type: 'POST',
+                data: {
+                    order_product_id: "{{ $order_product_id }}",
+                    price: "{{ $total }}",
+                    address: $("#address").val(),
+                    comment: $("#comment").val(),
+                    payment_mode: $('input[name="payment_mode"]:checked').val(),
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                dataType: 'json',
+                success: function(data) {
+                    // console.info(data);
+                }
+            });
         });
     })
 </script>
