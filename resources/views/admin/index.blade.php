@@ -1,13 +1,13 @@
 @extends('admin\partial\header\header')
 @section('title', 'Ecommerce Admin panel')
-@extends('admin\partial\sidebar\sidebar')
 
 
-<div class="container" style="margin-top: 80px">
-    <h2>Admin</h2>
-    <hr>
+@section('content')
 
-
+<div class="container">
+    <h1>Hello World</h1>
 </div>
+
+@endsection
 
 @extends('admin\partial\footer\footer')
