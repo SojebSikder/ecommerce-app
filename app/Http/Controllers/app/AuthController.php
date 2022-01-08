@@ -18,10 +18,12 @@ class AuthController extends Controller
     {
         $username = $request->input('username');
         $password = $request->input('password');
+        $remember = $request->input('remember');
         $fieldType = filter_var($username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
         // Login with username or email and password
-        if (Auth::attempt(array($fieldType => $username, 'password' => $password))) {
+        if (Auth::attempt([$fieldType => $username, 'password' => $password, 'status' => 'allow'], $remember)) {
+            $request->session()->regenerate();
             $user = Auth::user();
             return $user->username;
             return redirect('/')->with('status', 'Logged in successfully');
@@ -90,9 +92,12 @@ class AuthController extends Controller
         // ], 200);
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        
         return redirect('/login')->with('status', 'Logged out successfully');
     }
 }
