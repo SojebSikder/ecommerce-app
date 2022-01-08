@@ -37,3 +37,4 @@ Route::post('/register', [App\Http\Controllers\app\AuthController::class, 'regis
 Route::get('/logout', [App\Http\Controllers\app\AuthController::class, 'logout']);
 //cart
 Route::get('/cart', [App\Http\Controllers\app\CartController::class, 'cart_page']);
+Route::post('/cart', [App\Http\Controllers\app\CartController::class, 'store'])->middleware('auth');

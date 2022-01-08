@@ -18,7 +18,11 @@
                 <h5 class="card-title"> <a href="/product/{{ $row->id }}">{{ $row->title }}</a> </h5>
                 <p class="card-text">{{ $row->content }}</p>
 
-                <a href="/product/{{ $row->id }}" class="btn btn-primary">Add to cart</a>
+                <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{ url('cart') }}">
+                    @csrf
+                    <input type="hidden" class="btn btn-primary" name="product_id" value="{{ $row->id }}"></a>
+                    <input type="submit" class="btn btn-primary" value="Add to cart"></a>
+                </form>
             </div>
         </div>
         <!-- product card end -->
