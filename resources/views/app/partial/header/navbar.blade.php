@@ -37,6 +37,9 @@
                         @endif
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/"> <i class="fas fa-shopping-cart"></i> Cart</a>
+                </li>
             </ul>
         </div>
     </nav>
