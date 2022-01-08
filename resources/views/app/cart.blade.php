@@ -5,6 +5,8 @@
 
 <div class="container" style="margin-top: 80px">
     <h2>Cart Page</h2>
+
+    
 </div>
 
 @extends('app\partial\footer\footer')
