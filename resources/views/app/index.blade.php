@@ -22,6 +22,7 @@
                     @csrf
                     <input type="hidden" class="btn btn-primary" name="product_id" value="{{ $row->id }}"></a>
                     <input type="submit" class="btn btn-primary" value="Add to cart"></a>
+                    <input type="number" style="width: 30%; text-align: center;" name="qnty" value="1"></a>
                 </form>
             </div>
         </div>

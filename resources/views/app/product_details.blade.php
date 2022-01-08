@@ -14,14 +14,19 @@
                 <h5 class="card-title"> {{ $data->title }} </h5>
                 <p class="card-text">{{ $data->content }}.</p>
 
-                
+
             </div>
         </div>
         <!-- product card end -->
         <div style="margin-left: 10px;">
-             <a href="#" class="btn btn-primary">Add to cart</a>
+            <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{ url('cart') }}">
+                @csrf
+                <input type="hidden" class="btn btn-primary" name="product_id" value="{{ $data->id }}"></a>
+                <input type="submit" class="btn btn-primary" value="Add to cart"></a>
+                <input type="number" style="width: 30%; text-align: center;" name="qnty" value="1"></a>
+            </form>
         </div>
-       
+
     </div>
 </div>
 
