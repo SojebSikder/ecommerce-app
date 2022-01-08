@@ -37,11 +37,15 @@
                 <td> {{ $row->qnty }} </td>
                 <td> {{ $row->products->price }}tk </td>
 
-                <form method="post" action="/cart/{{ $row->id }}">
-                    @csrf
-                    {{ method_field('delete') }}
-                    <td> <button type="submit" class="btn btn-danger">Remove</button></td>
-                </form>
+                <td>
+                    <form method="post" action="{{ route('cart.destroy', $row->id) }}">
+                        @csrf
+                        @method("DELETE")
+
+                        <button type="submit" class="btn btn-danger">Remove</button>
+                    </form>
+                </td>
+
 
             </tr>
 
