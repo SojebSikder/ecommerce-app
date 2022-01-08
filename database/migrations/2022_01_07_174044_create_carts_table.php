@@ -15,6 +15,11 @@ class CreateCartsTable extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
+
+            $table->string('user_id')->nullable()->references('id')->on('users')->onDelete('set null');
+            $table->string('product_id')->references('product_id')->on('products')->onDelete('set null');
+            $table->bigInteger('qnty')->nullable();
+
             $table->timestamps();
         });
     }
