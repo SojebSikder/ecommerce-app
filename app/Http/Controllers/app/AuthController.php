@@ -25,7 +25,12 @@ class AuthController extends Controller
         if (Auth::attempt([$fieldType => $username, 'password' => $password, 'status' => 'allow'], $remember)) {
             $request->session()->regenerate();
             $user = Auth::user();
-            return $user->username;
+
+            session([
+                'username' => $user->username,
+                'email' => $user->email
+            ]);
+
             return redirect('/')->with('status', 'Logged in successfully');
         } else {
             return redirect('/login')->with('status', 'Login Error');
@@ -97,7 +102,7 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        
+
         return redirect('/login')->with('status', 'Logged out successfully');
     }
 }
