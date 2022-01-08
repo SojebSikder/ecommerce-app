@@ -30,6 +30,9 @@ class OrderController extends Controller
         $order->status = 'order_placed'; // 1 = Order not picked anyone
         $order->save();
 
+        if ($request->ajax()) {
+            return response()->json(['message' => "order placed successfully"]);
+        }
         // return redirect('/order')->with('success', 'Order have been placed successfully');
         // return redirect('/order')->with('success', 'Order have been placed successfully');
     }
@@ -47,5 +50,9 @@ class OrderController extends Controller
         $orderProduct->qnty = $request->input('qnty');
         $orderProduct->created_at = Carbon::now()->toDateTimeString();
         $orderProduct->save();
+
+        if ($request->ajax()) {
+            return response()->json(['message' => "order placed successfully"]);
+        }
     }
 }
