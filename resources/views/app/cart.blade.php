@@ -39,7 +39,6 @@
                 <td> {{ $row->products->brand }} </td>
                 <td> {{ $row->qnty }} </td>
                 <td> {{ $row->products->price }}tk </td>
-
                 <td>
                     <form method="post" action="{{ route('cart.destroy', $row->id) }}">
                         @csrf
@@ -48,8 +47,6 @@
                         <button type="submit" class="btn btn-danger">Remove</button>
                     </form>
                 </td>
-
-
             </tr>
 
             @empty
