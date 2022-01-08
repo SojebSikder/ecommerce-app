@@ -15,6 +15,7 @@
                 <th scope="col">Brand</th>
                 <th scope="col">Qnty</th>
                 <th scope="col">Price</th>
+                <th scope="col">Option</th>
             </tr>
         </thead>
         <tbody>
@@ -35,6 +36,7 @@
                 <td> {{ $row->products->brand }} </td>
                 <td> {{ $row->qnty }} </td>
                 <td> {{ $row->products->price }}tk </td>
+                <td> <button class="btn btn-danger">Remove</button>  </td>
             </tr>
 
             @empty
@@ -43,7 +45,23 @@
         </tbody>
     </table>
     <hr>
-    Total Price:
+    <?php
+    $total = 0;
+    foreach ($data as $rows) {
+        $total = $rows->products->price + $total;
+    }
+
+
+    ?>
+    <div class="d-flex flex-row justify-content-between">
+        <div class="p-2">
+            <h3>Total Price:</h3>
+        </div>
+        <div class="p-2">
+            <h3>{{ $total }}tk</h3>
+        </div>
+    </div>
+
 </div>
 
 @extends('app\partial\footer\footer')
