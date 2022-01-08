@@ -6,17 +6,27 @@
 <div class="container" style="margin-top: 80px">
     <h2>Explore from latest collection</h2>
     <hr>
+
+    @forelse ($data as $row)
     <!-- product card start -->
     <div class="card" style="width: 18rem">
-        <a href="/product/123"><img class="card-img-top" src="{{ asset('assets/images/watch.webp') }} " alt="Card image cap" /></a>
+        <a href="/product/123"><img class="card-img-top" src="{{ asset('assets/images/'.$row->image) }} " alt="Card image cap" /></a>
         <div class="card-body">
-            <h5 class="card-title"> <a href="/product/123">Rolex Watch</a> </h5>
-            <p class="card-text"> Buy this awesome watch.</p>
+            <h5 class="card-title"> <a href="/product/123">{{ $row->title }}</a> </h5>
+            <p class="card-text">{{ $row->content }}</p>
 
             <a href="/product/123" class="btn btn-primary">Add to cart</a>
         </div>
     </div>
     <!-- product card end -->
+
+
+
+    @empty
+    <p>No product</p>
+    @endforelse
+
+
 </div>
 
 @extends('app\partial\footer\footer')
