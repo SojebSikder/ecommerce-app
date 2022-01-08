@@ -30,7 +30,8 @@ class OrderController extends Controller
         $order->status = 'order_placed'; // 1 = Order not picked anyone
         $order->save();
 
-        return redirect('/order')->with('success', 'Order have been placed successfully');
+        // return redirect('/order')->with('success', 'Order have been placed successfully');
+        // return redirect('/order')->with('success', 'Order have been placed successfully');
     }
 
     /**

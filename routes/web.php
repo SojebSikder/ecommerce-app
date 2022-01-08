@@ -47,5 +47,6 @@ Route::delete('/cart/{id}', [App\Http\Controllers\app\CartController::class, 'de
 //order
 Route::post('/order', [App\Http\Controllers\app\OrderController::class, 'store'])
     ->middleware('auth')->name("order.store");
+
 Route::post('/order_product', [App\Http\Controllers\app\OrderController::class, 'store_order_product'])
     ->middleware('auth')->name("order.store");
