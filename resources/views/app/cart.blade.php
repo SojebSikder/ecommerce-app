@@ -80,7 +80,7 @@
             <div class="mb-3 row">
                 <label for="staticUsername" class="col-sm-2 col-form-label">Address</label>
                 <div class="col-sm-5">
-                    <textarea name="address" class="form-control" placeholder="Address" id="staticUsername"></textarea>
+                    <textarea name="address" class="form-control" placeholder="Address" id="address" id="staticUsername"></textarea>
                 </div>
             </div>
 
@@ -121,37 +121,6 @@ $order_product_id = uniqid(true);
             if ($("#address").val() == "") {
                 return alert("Enter address")
             }
-
-            // // Example POST method implementation:
-            // async function postData(url = '', data = {}) {
-            //     // Default options are marked with *
-            //     const response = await fetch(url, {
-            //         method: 'POST', // *GET, POST, PUT, DELETE, etc.
-            //         mode: 'cors', // no-cors, *cors, same-origin
-            //         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            //         credentials: 'same-origin', // include, *same-origin, omit
-            //         headers: {
-            //             'Content-Type': 'application/json',
-            //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            //             // 'Content-Type': 'application/x-www-form-urlencoded',
-            //         },
-            //         redirect: 'follow', // manual, *follow, error
-            //         referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-            //         body: JSON.stringify(data) // body data type must match "Content-Type" header
-            //     });
-            //     return response.json(); // parses JSON response into native JavaScript objects
-            // }
-
-            // postData('/order', {
-            //         order_product_id: "{{ $order_product_id }}",
-            //         price: "{{ $total }}",
-            //         address: $("#address").val(),
-            //         comment: $("#comment").val(),
-            //         payment_mode: $('input[name="payment_mode"]:checked').val(),
-            //     })
-            //     .then(data => {
-            //         console.log(data); // JSON data parsed by `data.json()` call
-            //     });
 
             $.ajax({
                 url: '/order',
