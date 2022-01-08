@@ -5,6 +5,7 @@ namespace App\Http\Controllers\app;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -18,21 +19,16 @@ class AuthController extends Controller
         $username = $request->input('username');
         $password = $request->input('password');
 
+        $fieldType = filter_var($username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
-        if ($username) {
-            if (!User::where('username', '=', $username)->exists()) {
-                $request->request->add(['username' => $username]);
-            } else {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Username already teken. Please choose another  :('
-                ], 201);
-            }
+
+
+        if (Auth::attempt(array($fieldType => $username, 'password' => $password))) {
+            return "success";
         } else {
-            return response()->json([
-                'success' => false, 'message' => 'Username is required  :('
-            ], 201);
+            return "false";
         }
+
 
         return redirect('/')->with('status', 'Logged in successfully');
     }
@@ -62,8 +58,6 @@ class AuthController extends Controller
                 'success' => false, 'message' => 'Username is required  :('
             ], 201);
         }
-
-
         if ($email) {
             if (!User::where('email', '=', $email)->exists()) {
                 $request->request->add(['email' => $email]);
@@ -78,13 +72,11 @@ class AuthController extends Controller
                 'success' => false, 'message' => 'Email is required  :('
             ], 201);
         }
-
         if (strlen($password) < 6) {
             return response()->json([
                 'success' => false, 'message' => 'Password must be 6 digit length  :('
             ], 201);
         }
-
 
         $user = new User();
         $user->username = $username;
@@ -99,5 +91,10 @@ class AuthController extends Controller
         // return response()->json([
         //     'success' => true, 'message' => 'Account created successfully'
         // ], 200);
+    }
+
+    public function logout()
+    {
+        return redirect('/login')->with('status', 'Logged out successfully');
     }
 }
