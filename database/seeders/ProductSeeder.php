@@ -42,5 +42,57 @@ class ProductSeeder extends Seeder
             'published' => 1,
             'category_id' => '1',
         ]);
+        \App\Models\Product::create([
+            'id' => '1234568',
+            'title' => 'Rado Watch',
+            'slug' => 'rado-watch',
+            'content' => 'Buy this awesome watch.',
+            'brand' => 'Rado',
+            'image' => 'watch.webp',
+            'old_price' => 50,
+            'price' => 20,
+            'qnty' => 10,
+            'published' => 1,
+            'category_id' => '1',
+        ]);
+        \App\Models\Product::create([
+            'id' => '1234569',
+            'title' => 'Rado Watch',
+            'slug' => 'rado-watch',
+            'content' => 'Buy this awesome watch.',
+            'brand' => 'Rado',
+            'image' => 'watch.webp',
+            'old_price' => 50,
+            'price' => 20,
+            'qnty' => 10,
+            'published' => 1,
+            'category_id' => '1',
+        ]);
+        \App\Models\Product::create([
+            'id' => '123456910',
+            'title' => 'Rado Watch',
+            'slug' => 'rado-watch',
+            'content' => 'Buy this awesome watch.',
+            'brand' => 'Rado',
+            'image' => 'watch.webp',
+            'old_price' => 50,
+            'price' => 20,
+            'qnty' => 10,
+            'published' => 1,
+            'category_id' => '1',
+        ]);
+        \App\Models\Product::create([
+            'id' => '123456911',
+            'title' => 'Rado Watch',
+            'slug' => 'rado-watch',
+            'content' => 'Buy this awesome watch.',
+            'brand' => 'Rado',
+            'image' => 'watch.webp',
+            'old_price' => 50,
+            'price' => 20,
+            'qnty' => 10,
+            'published' => 1,
+            'category_id' => '1',
+        ]);
     }
 }

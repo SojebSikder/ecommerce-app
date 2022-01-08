@@ -7,24 +7,27 @@
     <h2>Explore from latest collection</h2>
     <hr>
 
-    @forelse ($data as $row)
+    <div class="row justify-content-md-center">
+        @forelse ($data as $row)
 
-    <!-- product card start -->
-    <div class="card" style="width: 18rem">
-        <a href="/product/{{ $row->id }}">
-            <img class="card-img-top" src="{{ asset('assets/images/'.$row->image) }} " alt="{{ $row->title }}" /></a>
-        <div class="card-body">
-            <h5 class="card-title"> <a href="/product/{{ $row->id }}">{{ $row->title }}</a> </h5>
-            <p class="card-text">{{ $row->content }}</p>
+        <!-- product card start -->
+        <div class="card" style="width: 18rem; margin: 10px;">
+            <a href="/product/{{ $row->id }}">
+                <img class="card-img-top" src="{{ asset('assets/images/'.$row->image) }} " alt="{{ $row->title }}" /></a>
+            <div class="card-body">
+                <h5 class="card-title"> <a href="/product/{{ $row->id }}">{{ $row->title }}</a> </h5>
+                <p class="card-text">{{ $row->content }}</p>
 
-            <a href="/product/{{ $row->id }}" class="btn btn-primary">Add to cart</a>
+                <a href="/product/{{ $row->id }}" class="btn btn-primary">Add to cart</a>
+            </div>
         </div>
-    </div>
-    <!-- product card end -->
+        <!-- product card end -->
 
-    @empty
-    <p>No product</p>
-    @endforelse
+        @empty
+        <p>No product</p>
+        @endforelse
+
+    </div>
 
 
 </div>
