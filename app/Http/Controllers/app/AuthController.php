@@ -18,19 +18,16 @@ class AuthController extends Controller
     {
         $username = $request->input('username');
         $password = $request->input('password');
-
         $fieldType = filter_var($username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
-
-
+        // Login with username or email and password
         if (Auth::attempt(array($fieldType => $username, 'password' => $password))) {
-            return "success";
+            $user = Auth::user();
+            return $user->username;
+            return redirect('/')->with('status', 'Logged in successfully');
         } else {
-            return "false";
+            return redirect('/login')->with('status', 'Login Error');
         }
-
-
-        return redirect('/')->with('status', 'Logged in successfully');
     }
 
     public function register_page()
@@ -95,6 +92,7 @@ class AuthController extends Controller
 
     public function logout()
     {
+        Auth::logout();
         return redirect('/login')->with('status', 'Logged out successfully');
     }
 }
