@@ -13,7 +13,7 @@
         <!-- product card start -->
         <div class="card" style="width: 18rem; margin: 10px;">
             <a href="/product/{{ $row->id }}">
-                <img class="card-img-top" src="{{ asset('assets/images/'.$row->image) }} " alt="{{ $row->title }}" /></a>
+                <img class="card-img-top" src="{{ asset('uploads/products/'.$row->image) }} " alt="{{ $row->title }}" /></a>
             <div class="card-body">
                 <h5 class="card-title"> <a href="/product/{{ $row->id }}">{{ $row->title }}</a> </h5>
                 <p class="card-text">{{ $row->content }}</p>

@@ -17,6 +17,7 @@ class IndexController extends Controller
 
     public function show($id)
     {
-        return view("app/product_details");
+        $result = Product::where("id", $id)->first();
+        return view("app/product_details", ['data' => $result]);
     }
 }
