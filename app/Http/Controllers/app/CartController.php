@@ -43,7 +43,7 @@ class CartController extends Controller
             $cart = Cart::where('id', $id);
             $cart->delete();
             // return response()->json(['message' => 'Deleted successfully'], 200);
-            return redirect("/cart");
+            return redirect('/cart')->with('success', 'Item removed');
         } else {
             return response()->json(["message" => "you're not able to proceed :("], 200);
         }

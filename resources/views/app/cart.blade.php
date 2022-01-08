@@ -5,6 +5,9 @@
 
 <div class="container" style="margin-top: 80px">
     <h2>Cart Page</h2>
+    <!-- @if (session('success'))
+    <p>{{ session('success') }}</p>
+    @endif -->
 
     <table class="table">
         <thead>
