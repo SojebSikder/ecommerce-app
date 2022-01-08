@@ -29,13 +29,23 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('/', [App\Http\Controllers\app\IndexController::class, 'index']);
 Route::get('/product/{id}', [App\Http\Controllers\app\IndexController::class, 'show']);
 // Auth
-Route::get('/profile', [App\Http\Controllers\app\AuthController::class, 'profile_page'])->middleware('auth');
-Route::get('/login', [App\Http\Controllers\app\AuthController::class, 'login_page'])->name('login');
+Route::get('/profile', [App\Http\Controllers\app\AuthController::class, 'profile_page'])
+    ->middleware('auth');
+Route::get('/login', [App\Http\Controllers\app\AuthController::class, 'login_page'])
+    ->name('login');
 Route::post('/login', [App\Http\Controllers\app\AuthController::class, 'login']);
 Route::get('/register', [App\Http\Controllers\app\AuthController::class, 'register_page']);
 Route::post('/register', [App\Http\Controllers\app\AuthController::class, 'register']);
 Route::get('/logout', [App\Http\Controllers\app\AuthController::class, 'logout']);
 //cart
 Route::get('/cart', [App\Http\Controllers\app\CartController::class, 'cart_page']);
-Route::post('/cart', [App\Http\Controllers\app\CartController::class, 'store'])->middleware('auth');
-Route::delete('/cart/{id}', [App\Http\Controllers\app\CartController::class, 'destroy'])->middleware('auth')->name("cart.destroy");
+Route::post('/cart', [App\Http\Controllers\app\CartController::class, 'store'])
+    ->middleware('auth');
+Route::delete('/cart/{id}', [App\Http\Controllers\app\CartController::class, 'destroy'])
+    ->middleware('auth')->name("cart.destroy");
+
+//order
+Route::post('/order', [App\Http\Controllers\app\OrderController::class, 'store'])
+    ->middleware('auth')->name("order.store");
+Route::post('/order_product', [App\Http\Controllers\app\OrderController::class, 'store_order_product'])
+    ->middleware('auth')->name("order.store");

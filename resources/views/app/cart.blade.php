@@ -55,13 +55,12 @@
         </tbody>
     </table>
     <hr>
+    
     <?php
     $total = 0;
     foreach ($data as $rows) {
         $total = ($rows->products->price * $rows->qnty) + $total;
     }
-
-
     ?>
     <div class="d-flex flex-row justify-content-between">
         <div class="p-2">
@@ -70,6 +69,14 @@
         <div class="p-2">
             <h3>{{ $total }}tk</h3>
         </div>
+    </div>
+
+    <div class="d-flex flex-row justify-content-center">
+        <form method="post" action="{{ route('order.store') }}">
+            @csrf
+            <button type="submit" class="btn btn-info btn-lg">Place Order</button>
+        </form>
+
     </div>
 
 </div>
