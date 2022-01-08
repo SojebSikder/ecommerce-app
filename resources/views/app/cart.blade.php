@@ -58,8 +58,6 @@
 
     <?php
 
-    use Illuminate\Support\Facades\Http;
-
     $total = 0;
     foreach ($data as $rows) {
         $total = ($rows->products->price * $rows->qnty) + $total;
@@ -123,23 +121,59 @@ $order_product_id = uniqid(true);
             }
 
             $.ajax({
-                url: '/order',
-                type: 'POST',
-                data: {
-                    order_product_id: "{{ $order_product_id }}",
-                    price: "{{ $total }}",
-                    address: $("#address").val(),
-                    comment: $("#comment").val(),
-                    payment_mode: $('input[name="payment_mode"]:checked').val(),
-                },
+                url: '/cart',
+                type: 'GET',
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 dataType: 'json',
                 success: function(data) {
+                    // handle order product
+                    
                     console.info(data);
                 }
             });
+
+            // store order product
+            // $.ajax({
+            //     url: '/order_product',
+            //     type: 'POST',
+            //     data: {
+            //         product_id: "",
+            //         order_product_id: "{{ $order_product_id }}",
+            //         price: "{{ $total }}",
+            //         address: $("#address").val(),
+            //         comment: $("#comment").val(),
+            //         payment_mode: $('input[name="payment_mode"]:checked').val(),
+            //     },
+            //     headers: {
+            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //     },
+            //     dataType: 'json',
+            //     success: function(data) {
+            //         console.info(data);
+            //     }
+            // });
+
+            // store order
+            // $.ajax({
+            //     url: '/order',
+            //     type: 'POST',
+            //     data: {
+            //         order_product_id: "{{ $order_product_id }}",
+            //         price: "{{ $total }}",
+            //         address: $("#address").val(),
+            //         comment: $("#comment").val(),
+            //         payment_mode: $('input[name="payment_mode"]:checked').val(),
+            //     },
+            //     headers: {
+            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //     },
+            //     dataType: 'json',
+            //     success: function(data) {
+            //         console.info(data);
+            //     }
+            // });
         });
     })
 </script>

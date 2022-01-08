@@ -11,9 +11,12 @@ use Illuminate\Support\Facades\Auth;
 class CartController extends Controller
 {
     //
-    public function cart_page()
+    public function cart_page(Request $request)
     {
         $result = Cart::with("products")->where("user_id", Auth::id())->get();
+        if ($request->ajax()) {
+            return response()->json(['data' => $result]);
+        }
         return view('app/cart', ['data' => $result]);
     }
 
