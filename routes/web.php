@@ -35,3 +35,5 @@ Route::post('/login', [App\Http\Controllers\app\AuthController::class, 'login'])
 Route::get('/register', [App\Http\Controllers\app\AuthController::class, 'register_page']);
 Route::post('/register', [App\Http\Controllers\app\AuthController::class, 'register']);
 Route::get('/logout', [App\Http\Controllers\app\AuthController::class, 'logout']);
+//cart
+Route::get('/cart', [App\Http\Controllers\app\CartController::class, 'cart_page']);
