@@ -71,9 +71,36 @@
         </div>
     </div>
 
-    <div class="d-flex flex-row justify-content-center">
-        <button type="submit" class="btn btn-info btn-lg">Place Order</button>
-    </div>
+    <form action="" method="post">
+        <div class="d-flex flex-column justify-content-center">
+
+            <div class="mb-3 row">
+                <label for="staticUsername" class="col-sm-2 col-form-label">Address</label>
+                <div class="col-sm-5">
+                    <textarea name="address" class="form-control" placeholder="Address" id="staticUsername"></textarea>
+                </div>
+            </div>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="payment_mode" id="inlineRadio1" value="cod" checked>
+                <label class="form-check-label" for="inlineRadio1">Cash on delivery</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="payment_mode" id="inlineRadio2" value="bkash">
+                <label class="form-check-label" for="inlineRadio2">Bkash</label>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Comment</label>
+                <div class="col-sm-5">
+                    <textarea name="comment" class="form-control" placeholder="Comment (If any)" id="inputPassword"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-row justify-content-center">
+            <button type="submit" class="btn btn-info btn-lg">Place Order</button>
+        </div>
+    </form>
 
 </div>
 
