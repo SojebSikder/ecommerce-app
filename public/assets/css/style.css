@@ -3,3 +3,7 @@
     width: 50%;
     padding-bottom: 30px;
 }
+
+.progress-bar.animate {
+    width: 100%;
+}

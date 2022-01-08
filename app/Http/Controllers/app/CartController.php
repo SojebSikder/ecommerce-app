@@ -47,7 +47,7 @@ class CartController extends Controller
         return back();
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $user_id = Auth::id();
         $user = Cart::where('id', $id)->first();
@@ -55,7 +55,11 @@ class CartController extends Controller
         if ($user_id == $user->user_id) {
             $cart = Cart::where('id', $id);
             $cart->delete();
-            // return response()->json(['message' => 'Deleted successfully'], 200);
+
+            if ($request->ajax()) {
+                return response()->json(['message' => "deleted successfully"]);
+            }
+
             return redirect('/cart')->with('success', 'Item removed');
         } else {
             return response()->json(["message" => "you're not able to proceed :("], 200);
