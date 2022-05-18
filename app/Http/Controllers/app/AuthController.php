@@ -13,8 +13,7 @@ class AuthController extends Controller
     //
     public function profile_page()
     {
-        $data = Order::where("user_id", Auth::id())->orderBy('id', 'DESC')->get();
-        return view('app/profile', ['orders' => $data]);
+        return view('app/profile');
     }
     public function login_page()
     {

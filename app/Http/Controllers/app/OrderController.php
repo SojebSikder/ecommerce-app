@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Auth;
 class OrderController extends Controller
 {
     //
+    public function show_orders_page()
+    {
+        $data = Order::where("user_id", Auth::id())->orderBy('id', 'DESC')->get();
+        return view('app/orders/orders', ['orders' => $data]);
+    }
     public function store(Request $request)
     {
         $order = new Order();

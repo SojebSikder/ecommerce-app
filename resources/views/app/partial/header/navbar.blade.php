@@ -35,6 +35,8 @@
                             @if(session('username'))
                             <a class="dropdown-item" href="/profile">Profile</a>
                             <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/orders">My Order</a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ URL::to('logout') }}">Logout</a>
                             @else
                             <a class="dropdown-item" href="/login">Login</a>
