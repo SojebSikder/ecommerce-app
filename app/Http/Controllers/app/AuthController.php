@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\app;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +13,8 @@ class AuthController extends Controller
     //
     public function profile_page()
     {
-        return view('app/profile');
+        $data = Order::where("user_id", Auth::id())->get();
+        return view('app/profile', ['orders' => $data]);
     }
     public function login_page()
     {

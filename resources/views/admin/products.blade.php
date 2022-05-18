@@ -5,6 +5,7 @@
 @section('content')
 
 <div class="container">
+    <a href="/">back to app</a>
     <h1>All products</h1>
 
     <ul>
