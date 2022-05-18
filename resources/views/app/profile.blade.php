@@ -10,12 +10,14 @@
 
     <h2>My Orders</h2>
 
-    @foreach($orders as $order)
     <ol>
+        @foreach($orders as $order)
+
         <li>{{$order->id}}</li>
+
+        @endforeach
     </ol>
-    @endforeach
-    
+
 </div>
 
 @extends('app\partial\footer\footer')
