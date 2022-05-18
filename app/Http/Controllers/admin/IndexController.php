@@ -9,9 +9,13 @@ use Illuminate\Http\Request;
 class IndexController extends Controller
 {
     //
+    public function show_dashboard()
+    {
+        return view("admin/index");
+    }
     public function index()
     {
-        $result = Product::all();
-        return view("admin/index", ['data' => $result]);
+        $data = Product::all();
+        return view("admin/products", ['products' => $data]);
     }
 }

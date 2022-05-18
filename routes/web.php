@@ -23,7 +23,8 @@ Route::get('/thankyou', function () {
 
 // Admin route
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('/', [App\Http\Controllers\admin\IndexController::class, 'index']);
+    Route::get('/', [App\Http\Controllers\admin\IndexController::class, 'show_dashboard']);
+    Route::get('/products', [App\Http\Controllers\admin\IndexController::class, 'index']);
 });
 
 // App route
