@@ -15,13 +15,13 @@
         </tr>
         @foreach($orders as $order)
 
+
         <tr>
-            <td> {{$order->id}}</td>
+            <td> <a href="/order/{{$order->id}}"> {{$order->id}} </a></td>
             <td> {{$order->discount}}</td>
             <td> {{$order->price}}</td>
             <td> {{$order->status}}</td>
         </tr>
-
         @endforeach
 
     </table>

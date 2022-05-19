@@ -47,12 +47,14 @@ Route::delete('/cart/{id}', [App\Http\Controllers\app\CartController::class, 'de
     ->middleware('auth')->name("cart.destroy");
 
 //order
-// show all orders
-Route::get('/orders', [App\Http\Controllers\app\OrderController::class, 'show_orders_page'])
-    ->middleware('auth');
-
 Route::post('/order', [App\Http\Controllers\app\OrderController::class, 'store'])
     ->middleware('auth')->name("order.store");
 
 Route::post('/order_product', [App\Http\Controllers\app\OrderController::class, 'store_order_product'])
     ->middleware('auth')->name("order.store");
+
+// show all orders
+Route::get('/orders', [App\Http\Controllers\app\OrderController::class, 'show_orders_page'])
+    ->middleware('auth');
+Route::get('/order/{id}', [App\Http\Controllers\app\OrderController::class, 'show_single_order_page'])
+    ->middleware('auth');

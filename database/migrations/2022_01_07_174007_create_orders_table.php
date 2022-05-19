@@ -20,21 +20,38 @@ class CreateOrdersTable extends Migration
             $table->string('user_id')->references('id')->on('users')->onDelete('set null');
             $table->decimal('price');
             $table->decimal('discount')->nullable();
-            $table->enum('payment_mode', ['COD', 'BKASH'])->default('COD')->nullable();
-            $table->enum('payment_status', ['not paid', 'paid'])->default('not paid')->nullable();
+            /**
+             * payment_mode:
+             * 
+             * cod = Cash on delivery
+             * bkash = bkash
+             */
+            $table->string('payment_mode')->default('COD')->nullable();
+            /**
+             * payment_status:
+             * 
+             * not_paid = payment not paid
+             * paid = payment paid
+             */
+            $table->string('payment_status')->default('not_paid')->nullable();
 
-            $table->enum('status', [
-                'order_placed',
-                'order_picked',
-                'order_on_way',
-                'order_delivered',
-                'order_cancelled',
-                'order_paused'
-            ])->nullable();
+            /**
+             * order status: 
+             * 
+             * order_placed = order placed
+             * order_picked = order picked
+             * order_on_way = order on way
+             * order_delivered = order delivered
+             * order_cancelled = order cancelled
+             * order_paused = order paused
+             */
+            $table->string('status')->nullable();
             $table->text('comment')->nullable();
             $table->text('address')->nullable();
+            $table->string('address_id')->nullable();
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

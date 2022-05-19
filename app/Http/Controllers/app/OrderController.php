@@ -17,6 +17,11 @@ class OrderController extends Controller
         $data = Order::where("user_id", Auth::id())->orderBy('id', 'DESC')->get();
         return view('app/orders/orders', ['orders' => $data]);
     }
+    public function show_single_order_page($id)
+    {
+        $data = Order::where("user_id", Auth::id())->where('id', $id)->orderBy('id', 'DESC')->first();
+        return view('app/orders/single_order', ['products' => $data]);
+    }
     public function store(Request $request)
     {
         $order = new Order();
